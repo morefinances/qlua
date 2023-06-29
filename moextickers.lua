@@ -10,25 +10,25 @@ function main()
 	message('[ = = = = = = = = = = start = = = = = = = = = = ]')
 	
 	datetime = os.date("!*t",os.time())
-	message('Îïðåäåëåíèå òèêåðîâ òîðãóåìûõ áóìàã íà ôîíäîâîé ñåêöèè')
+	message('')
 	message(os.date("%d.%m.%Y"))
-	message('Íà÷àëî ðàáîòû ñêðèïòà '..os.date("%X",os.time()))
+	message('Начало работы скрипта '..os.date("%X",os.time()))
 	
 
 	DirectionSaveFile=tostring("C:\\files\\tickers.csv") 
 	my_csv=io.open(DirectionSaveFile,"w") 
 	
-	sec_list = getClassSecurities("TQBR") -- òèêåðû â îäíó ñòðî÷êó
+	sec_list = getClassSecurities("TQBR") -- тикеры в одну строчку
 	
-	ind = 1 -- èíäåêñ ïîäñ÷åòà êîëè÷åñòâî áóìàã
-	sprint = "" -- ñêëåéêà ìàññèâîâ äëÿ âûâîäà
+	ind = 1 -- индекс подсчета количество бумаг
+	sprint = "" -- склейка массивов для вывода
 	
-	-- ðàçáèâêà ñòðîêè ñ òèêåðàìè
+	-- разбивка строки с тикерами
 	for TIKER in string.gmatch(sec_list, "[^,]+") do
-		-- çàïèñü â ôàéë
+		-- запись в файл
 		my_csv:write(TIKER.."\n")
 		sprint = sprint..tostring(ind).."/ "..TIKER.."  "
-		ind = ind + 1 -- èíäåêñ áóìàãè
+		ind = ind + 1 -- индекс бумаги
 		if ind%5 == 1 then 
 			message(sprint)
 			sprint = ""
@@ -38,12 +38,12 @@ function main()
 	
 	if sprint ~= "" then message(sprint) end 
 	
-	-- -- çàêðûòèå ôàéëà
+	-- -- закрытие файла
 	my_csv:flush()  
 	my_csv:close() 
 
-	message('Çàâåðøåíèå ðàáîòû ñêðèïòà '.. os.date("%X",os.time()))
-	message('Îáùåå êîëè÷åñòâî òîðãóåìûõ áóìàã : '..tostring(ind - 1))
+	message('Завершение работы скрипта '.. os.date("%X",os.time()))
+	message('Общее количество торгуемых бумаг : '..tostring(ind - 1))
 	message("[ = = = = = = = = = = end = = = = = = = = = =  ]")
 	
 end
