@@ -2,8 +2,7 @@
 Shared Access Scripts on QLua (for a trading terminal Quik)
 
 Скрипты для торгового терминала Quik. Общий доступ.
-Не забудьте после скачивания установить кодировку
-moextickers.lua Windows-1251. Quik только с ней дружит.
+Не забудьте после скачивания установить кодировку Windows-1251. Quik только с ней дружит.
 Иначе будет нечитаемо.
 
 moextickers.lua:
