@@ -133,7 +133,7 @@ function downloadsdata()
 	message("<-- выгрузка данных -->")
 	message("подгрузка тикеров с "..WorkPath.."tickers.csv")
 
-	-- выгрузка тикеров С:\files\moextickers.csv
+	-- выгрузка тикеров С:\files\tickers.csv
 	t = {}
 	DirectionOpenFile=tostring(WorkPath.."tickers.csv") 
 	f = io.open(DirectionOpenFile, "r");
