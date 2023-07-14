@@ -1,18 +1,18 @@
 function OnInit()
--- инициализирует глобальные переменные и константы
+-- РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РіР»РѕР±Р°Р»СЊРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ Рё РєРѕРЅСЃС‚Р°РЅС‚С‹
 	progname="example_two: "
 	do_it = true
 end
 
 function OnStop()
--- функция остановки скрипта, активируется при нажатии клавиши «Остановить» 
+-- С„СѓРЅРєС†РёСЏ РѕСЃС‚Р°РЅРѕРІРєРё СЃРєСЂРёРїС‚Р°, Р°РєС‚РёРІРёСЂСѓРµС‚СЃСЏ РїСЂРё РЅР°Р¶Р°С‚РёРё РєР»Р°РІРёС€Рё В«РћСЃС‚Р°РЅРѕРІРёС‚СЊВ» 
 	do_it = false
-	message(progname.." завершение работы")
+	message(progname.." Р·Р°РІРµСЂС€РµРЅРёРµ СЂР°Р±РѕС‚С‹")
 end
 
 function main()
---основная функция
-	message(progname.." старт")
+--РѕСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ
+	message(progname.." СЃС‚Р°СЂС‚")
 
 		for i=1, 10 do
 		
@@ -20,7 +20,7 @@ function main()
 			time2 = getInfoParam('SERVERTIME')
 
 			time_txt=time1.hour..":"..time1.min..":"..time1.sec
-			message("Время через os.sysdate: "..time_txt.." время SERVERTIME:"..time2)
+			message("Р’СЂРµРјСЏ С‡РµСЂРµР· os.sysdate: "..time_txt.." РІСЂРµРјСЏ SERVERTIME:"..time2)
 			sleep(250)
 			
 		end
