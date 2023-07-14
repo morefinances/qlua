@@ -6,21 +6,21 @@ end
 
 function OnStop()
 	do_it = false
-	message(progname.." завершение работы")
+	message(progname.." Р·Р°РІРµСЂС€РµРЅРёРµ СЂР°Р±РѕС‚С‹")
 end
 
 
 
 function main()
 	
-	message(progname.." старт")
+	message(progname.." СЃС‚Р°СЂС‚")
 
 	connect = isConnected()
 	
 	if connect == 1 then 
-		message(progname..' связь с сервером установлена')
+		message(progname..' СЃРІСЏР·СЊ СЃ СЃРµСЂРІРµСЂРѕРј СѓСЃС‚Р°РЅРѕРІР»РµРЅР°')
 	else
-		message(progname..'связи с сервером нет')
+		message(progname..'СЃРІСЏР·Рё СЃ СЃРµСЂРІРµСЂРѕРј РЅРµС‚')
 	end 
 	
 	
