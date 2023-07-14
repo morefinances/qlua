@@ -8,26 +8,26 @@ end
 
 function OnStop()
 	do_it = false
-	message(progname.." завершение работы")
+	message(progname.." Р·Р°РІРµСЂС€РµРЅРёРµ СЂР°Р±РѕС‚С‹")
 end
 
 function OnDisconnected()
 	status = - 1
-	message(progname..'терминал отключен от сервера')
+	message(progname..'С‚РµСЂРјРёРЅР°Р» РѕС‚РєР»СЋС‡РµРЅ РѕС‚ СЃРµСЂРІРµСЂР°')
 end
 
 
 function main()
 	
-	message(progname.." старт")
+	message(progname.." СЃС‚Р°СЂС‚")
 
 	connect = isConnected()
 	
 	if connect == 1 then 
-		message(progname..' связь с сервером установлена')
+		message(progname..' СЃРІСЏР·СЊ СЃ СЃРµСЂРІРµСЂРѕРј СѓСЃС‚Р°РЅРѕРІР»РµРЅР°')
 		status = 1 
 	else
-		message(progname..'связи с сервером нет')
+		message(progname..'СЃРІСЏР·Рё СЃ СЃРµСЂРІРµСЂРѕРј РЅРµС‚')
 		status = - 1
 	end 
 	
@@ -37,7 +37,7 @@ function main()
 		connect2 = isConnected()	
 		
 		if status == -1 and connect2 == 1 then 
-			message(progname..' соединение с сервером восстановлено')
+			message(progname..' СЃРѕРµРґРёРЅРµРЅРёРµ СЃ СЃРµСЂРІРµСЂРѕРј РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРѕ')
 			status = 1
 		end
 		
