@@ -5,8 +5,11 @@ Shared Access Scripts on QLua (for a trading terminal Quik)
 Не забудьте после скачивания установить кодировку Windows-1251. 
 Quik только с ней дружит. Иначе будет нечитаемо.
 
-C 14.07.2023 добавляю примеры для статей smart-lab.
-
+C 14.07.2023 добавляю примеры для статей smart-lab:
+example_one, example_two, example_three, example_four,example_five
+openfile, openfile_two, save_one, getPath для статьи
+"Qlua: структура скрипта для торгового терминала, обработка обрыва связи и её возобновления, работа с файлами"
+https://smart-lab.ru/blog/922044.php
 
 moextickers.lua:
 Скрипт делает выгрузку всех торгуемых акций на Московской Бирже (иногда встречаются варианты с нулевыми объемами, но с индикативными ценами). 
