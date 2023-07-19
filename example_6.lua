@@ -6,13 +6,10 @@ numoffers = getParamEx("TQBR", "GAZP", "NUMOFFERS").param_value
 numbids = getParamEx("TQBR", "GAZP", "NUMBIDS").param_value
 wprice  = getParamEx("TQBR", "GAZP", "WAPRICE").param_value
 
-message("Лучшая цена предложения OFFER: "..offer)
-message("Лучшая цена спроса BID: "..bid)
-message("Разница цены последней сделки к предыдущей сессии CHANGE: "..change) 
-message("% изменения от закрытия LASTCHANGE: "..lastchange)
-message("Количество заявок на продажу NUMOFFERS: "..numoffers)
-message("Количество заявок на покупку NUMBIDS: "..numbids)
-message("Средневзвешенная цена WAPRICE: "..wprice)
- 
-
- 
+message("Р›СѓС‡С€Р°СЏ С†РµРЅР° РїСЂРµРґР»РѕР¶РµРЅРёСЏ OFFER: "..offer)
+message("Р›СѓС‡С€Р°СЏ С†РµРЅР° СЃРїСЂРѕСЃР° BID: "..bid)
+message("Р Р°Р·РЅРёС†Р° С†РµРЅС‹ РїРѕСЃР»РµРґРЅРµР№ СЃРґРµР»РєРё Рє РїСЂРµРґС‹РґСѓС‰РµР№ СЃРµСЃСЃРёРё CHANGE: "..change) 
+message("% РёР·РјРµРЅРµРЅРёСЏ РѕС‚ Р·Р°РєСЂС‹С‚РёСЏ LASTCHANGE: "..lastchange)
+message("РљРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°СЏРІРѕРє РЅР° РїСЂРѕРґР°Р¶Сѓ NUMOFFERS: "..numoffers)
+message("РљРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°СЏРІРѕРє РЅР° РїРѕРєСѓРїРєСѓ NUMBIDS: "..numbids)
+message("РЎСЂРµРґРЅРµРІР·РІРµС€РµРЅРЅР°СЏ С†РµРЅР° WAPRICE: "..wprice) 
