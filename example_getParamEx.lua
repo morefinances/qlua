@@ -2,7 +2,7 @@ last_type = getParamEx("TQBR", "GAZP", "LAST").param_type
 last_value = getParamEx("TQBR", "GAZP", "LAST").param_value
 last_image = getParamEx("TQBR", "GAZP", "LAST").param_image
 
-message("Цена последней сделки по Газпрому: ")
-message("тип: "..last_type)
-message("значение : "..last_value)
-message("строка: "..last_image)
+message("Р¦РµРЅР° РїРѕСЃР»РµРґРЅРµР№ СЃРґРµР»РєРё РїРѕ Р“Р°Р·РїСЂРѕРјСѓ: ")
+message("С‚РёРї: "..last_type)
+message("Р·РЅР°С‡РµРЅРёРµ : "..last_value)
+message("СЃС‚СЂРѕРєР°: "..last_image)
