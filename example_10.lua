@@ -8,40 +8,40 @@ end
 function OnStop()
 	do_it = false
 	DestroyTable(m_t)
-	message(progname.." Финиш.")
+	message(progname.." Р¤РёРЅРёС€.")
 end
 
 
 function main() 
 
-	message(progname.." Старт.")
+	message(progname.." РЎС‚Р°СЂС‚.")
 	do_it = true
 
 
-	if m_t==nil then     -- если таблица не создана ранее, то 
-	m_t=AllocTable() -- создать таблицу
-		AddColumn(m_t, 1, "Тикер", true, QTABLE_STRING_TYPE, 10) 
-		-- добавить 1 столбец шириной в 10 символов
-		AddColumn(m_t, 2, "Бумага", true, QTABLE_STRING_TYPE, 20)
-		-- добавить 2 столбец шириной в 20 символов
-		AddColumn(m_t, 3, "Цена", true, QTABLE_STRING_TYPE, 10)
-		-- 3й столбец с шириной в 10
-		AddColumn(m_t, 4, "Суммарное предложение", true, QTABLE_STRING_TYPE, 25)
-		-- 4й и 5й столбцы с шириной в 25  
-		AddColumn(m_t, 5, "Суммарный спрос", true, QTABLE_STRING_TYPE, 25)
-	CreateWindow(m_t) -- создание окна таблицы
-	SetWindowPos(m_t,0,430,700,110) -- позиционирвание (x,y от левого верхнего угла) 
-									-- и размеры (ширина, высота)
-	SetWindowCaption(m_t, "Вывод данных через таблицу") -- показать таблицу, пишем заголовок
+	if m_t==nil then     -- РµСЃР»Рё С‚Р°Р±Р»РёС†Р° РЅРµ СЃРѕР·РґР°РЅР° СЂР°РЅРµРµ, С‚Рѕ 
+	m_t=AllocTable() -- СЃРѕР·РґР°С‚СЊ С‚Р°Р±Р»РёС†Сѓ
+		AddColumn(m_t, 1, "РўРёРєРµСЂ", true, QTABLE_STRING_TYPE, 10) 
+		-- РґРѕР±Р°РІРёС‚СЊ 1 СЃС‚РѕР»Р±РµС† С€РёСЂРёРЅРѕР№ РІ 10 СЃРёРјРІРѕР»РѕРІ
+		AddColumn(m_t, 2, "Р‘СѓРјР°РіР°", true, QTABLE_STRING_TYPE, 20)
+		-- РґРѕР±Р°РІРёС‚СЊ 2 СЃС‚РѕР»Р±РµС† С€РёСЂРёРЅРѕР№ РІ 20 СЃРёРјРІРѕР»РѕРІ
+		AddColumn(m_t, 3, "Р¦РµРЅР°", true, QTABLE_STRING_TYPE, 10)
+		-- 3Р№ СЃС‚РѕР»Р±РµС† СЃ С€РёСЂРёРЅРѕР№ РІ 10
+		AddColumn(m_t, 4, "РЎСѓРјРјР°СЂРЅРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ", true, QTABLE_STRING_TYPE, 25)
+		-- 4Р№ Рё 5Р№ СЃС‚РѕР»Р±С†С‹ СЃ С€РёСЂРёРЅРѕР№ РІ 25  
+		AddColumn(m_t, 5, "РЎСѓРјРјР°СЂРЅС‹Р№ СЃРїСЂРѕСЃ", true, QTABLE_STRING_TYPE, 25)
+	CreateWindow(m_t) -- СЃРѕР·РґР°РЅРёРµ РѕРєРЅР° С‚Р°Р±Р»РёС†С‹
+	SetWindowPos(m_t,0,430,700,110) -- РїРѕР·РёС†РёРѕРЅРёСЂРІР°РЅРёРµ (x,y РѕС‚ Р»РµРІРѕРіРѕ РІРµСЂС…РЅРµРіРѕ СѓРіР»Р°) 
+									-- Рё СЂР°Р·РјРµСЂС‹ (С€РёСЂРёРЅР°, РІС‹СЃРѕС‚Р°)
+	SetWindowCaption(m_t, "Р’С‹РІРѕРґ РґР°РЅРЅС‹С… С‡РµСЂРµР· С‚Р°Р±Р»РёС†Сѓ") -- РїРѕРєР°Р·Р°С‚СЊ С‚Р°Р±Р»РёС†Сѓ, РїРёС€РµРј Р·Р°РіРѕР»РѕРІРѕРє
 		for u = 1, #tikers do
-			InsertRow(m_t,-1)	-- добавить строку
+			InsertRow(m_t,-1)	-- РґРѕР±Р°РІРёС‚СЊ СЃС‚СЂРѕРєСѓ
 		end
 	end
 
  
 
 
--- вносим в таблицу неизменямые данные
+-- РІРЅРѕСЃРёРј РІ С‚Р°Р±Р»РёС†Сѓ РЅРµРёР·РјРµРЅСЏРјС‹Рµ РґР°РЅРЅС‹Рµ
 	for i = 1, #tikers do
 		local tName = getParamEx("TQBR", tikers[i], "SHORTNAME").param_image
 		SetCell(m_t, i, 1, tikers[i])
@@ -51,7 +51,7 @@ function main()
 
 	while do_it do
 
-		-- заполнение и дальнейшее обновление таблицы
+		-- Р·Р°РїРѕР»РЅРµРЅРёРµ Рё РґР°Р»СЊРЅРµР№С€РµРµ РѕР±РЅРѕРІР»РµРЅРёРµ С‚Р°Р±Р»РёС†С‹
 		for i = 1, #tikers do
 			 
 			local tLast = getParamEx("TQBR", tikers[i], "LAST").param_image 
