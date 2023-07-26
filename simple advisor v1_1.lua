@@ -131,7 +131,7 @@ function main()
 					else
 						SetCell(m_t, i, 7, "no signal SHORT")
 						message(progname.." пропускаем сигнал на SHORT по таймеру "..nonewsignalstime.." по "..tikers[i].." по цене "..tLast.param_image)
-						signal[i] = -1 
+						signal[i] = -2 
 					end
 					
 				end
@@ -150,7 +150,7 @@ function main()
 					else				
 						SetCell(m_t, i, 7, "no signal LONG")
 						message(progname.." пропускаем сигнал LONG по таймеру "..nonewsignalstime.." по "..tikers[i].." по цене "..tLast.param_image)
-						signal[i] = 1 
+						signal[i] = 2 
 					end
  					
 				end
