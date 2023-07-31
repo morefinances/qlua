@@ -6,10 +6,10 @@ function OnInit()
 	
 	progname = "simple advisor v.1.2 : "
 	timeout = 10000
-	timeout2 = 25000 -- пауза 25 секунд для проверки старта скрипта
-	startind = 0 -- индекс старта скрипта (первой итерации)
+	timeout2 = 25000 -- РїР°СѓР·Р° 25 СЃРµРєСѓРЅРґ РґР»СЏ РїСЂРѕРІРµСЂРєРё СЃС‚Р°СЂС‚Р° СЃРєСЂРёРїС‚Р°
+	startind = 0 -- РёРЅРґРµРєСЃ СЃС‚Р°СЂС‚Р° СЃРєСЂРёРїС‚Р° (РїРµСЂРІРѕР№ РёС‚РµСЂР°С†РёРё)
 	
-	-- цветовые константы
+	-- С†РІРµС‚РѕРІС‹Рµ РєРѕРЅСЃС‚Р°РЅС‚С‹
 	mBlack = RGB(0, 0, 0)
 	mWhite = RGB(255, 255, 255)
 	mRed = RGB(255, 204, 250)
@@ -29,7 +29,7 @@ end
 function OnStop()
 	DestroyTable(m_t)
 	do_it = false
-	message(progname.." Финиш.")
+	message(progname.." Р¤РёРЅРёС€.")
 end
 
 
@@ -62,66 +62,66 @@ end
  
 function main() 
 	
-	message(progname.." Старт.")
+	message(progname.." РЎС‚Р°СЂС‚.")
 	message(progname.." starttime = "..starttime)
 	message(progname.." nonewsignalstime = "..nonewsignalstime)
 	message(progname.." finishtime = "..finishtime)
 	
-	-- обработка starttime
+	-- РѕР±СЂР°Р±РѕС‚РєР° starttime
 	while hhmmss(os.sysdate())<starttime do
 		local time1 = hhmmss(os.sysdate())
-		message('Ожидаем время старта скрипта : '..starttime..", текущее время: "..time1) 
+		message('РћР¶РёРґР°РµРј РІСЂРµРјСЏ СЃС‚Р°СЂС‚Р° СЃРєСЂРёРїС‚Р° : '..starttime..", С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ: "..time1) 
 		sleep(timeout2)
 	end
 	
 	do_it = true
 	
-	size_table = 10 -- количество строк таблицы
-	table_result_ind = 1 -- индекс строки
+	size_table = 10 -- РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє С‚Р°Р±Р»РёС†С‹
+	table_result_ind = 1 -- РёРЅРґРµРєСЃ СЃС‚СЂРѕРєРё
 	if table_result==nil then  
 		table_result = AllocTable() 
-		AddColumn(table_result, 1, "Сигналы и результаты:", true, QTABLE_STRING_TYPE, 70) 
+		AddColumn(table_result, 1, "РЎРёРіРЅР°Р»С‹ Рё СЂРµР·СѓР»СЊС‚Р°С‚С‹:", true, QTABLE_STRING_TYPE, 70) 
 		CreateWindow(table_result) 
 		SetWindowPos(table_result,0,430,500,300) 
-		SetWindowCaption(table_result, progname.." сообщения скрипта")
+		SetWindowCaption(table_result, progname.." СЃРѕРѕР±С‰РµРЅРёСЏ СЃРєСЂРёРїС‚Р°")
 		for u = 1, size_table do 
 			InsertRow(table_result,-1)	
 		end
 	end
 	
-	if m_t==nil then     -- если таблица не создана ранее, то 
-		m_t = AllocTable() -- создать таблицу
-			AddColumn(m_t, 1, "Тикер", true, QTABLE_STRING_TYPE, 10) 
-			AddColumn(m_t, 2, "Бумага", true, QTABLE_STRING_TYPE, 20)
-			AddColumn(m_t, 3, "Тек.Цена", true, QTABLE_DOUBLE_TYPE, 10)
-			AddColumn(m_t, 4, "Закрытие", true, QTABLE_DOUBLE_TYPE, 10)
-			AddColumn(m_t, 5, "Продажи", true, QTABLE_INT64_TYPE, 10)
-			AddColumn(m_t, 6, "Покупки", true, QTABLE_INT64_TYPE, 10)
-			AddColumn(m_t, 7, "Сигнал", true, QTABLE_STRING_TYPE, 23)
+	if m_t==nil then     -- РµСЃР»Рё С‚Р°Р±Р»РёС†Р° РЅРµ СЃРѕР·РґР°РЅР° СЂР°РЅРµРµ, С‚Рѕ 
+		m_t = AllocTable() -- СЃРѕР·РґР°С‚СЊ С‚Р°Р±Р»РёС†Сѓ
+			AddColumn(m_t, 1, "РўРёРєРµСЂ", true, QTABLE_STRING_TYPE, 10) 
+			AddColumn(m_t, 2, "Р‘СѓРјР°РіР°", true, QTABLE_STRING_TYPE, 20)
+			AddColumn(m_t, 3, "РўРµРє.Р¦РµРЅР°", true, QTABLE_DOUBLE_TYPE, 10)
+			AddColumn(m_t, 4, "Р—Р°РєСЂС‹С‚РёРµ", true, QTABLE_DOUBLE_TYPE, 10)
+			AddColumn(m_t, 5, "РџСЂРѕРґР°Р¶Рё", true, QTABLE_INT64_TYPE, 10)
+			AddColumn(m_t, 6, "РџРѕРєСѓРїРєРё", true, QTABLE_INT64_TYPE, 10)
+			AddColumn(m_t, 7, "РЎРёРіРЅР°Р»", true, QTABLE_STRING_TYPE, 23)
 		CreateWindow(m_t)  
 		SetWindowPos(m_t,700,0,690,780) 
-		SetWindowCaption(m_t, progname.." создание советника") -- показать таблицу, пишем заголовок
+		SetWindowCaption(m_t, progname.." СЃРѕР·РґР°РЅРёРµ СЃРѕРІРµС‚РЅРёРєР°") -- РїРѕРєР°Р·Р°С‚СЊ С‚Р°Р±Р»РёС†Сѓ, РїРёС€РµРј Р·Р°РіРѕР»РѕРІРѕРє
 		
-		-- добавляем строки циклом
+		-- РґРѕР±Р°РІР»СЏРµРј СЃС‚СЂРѕРєРё С†РёРєР»РѕРј
 		for u = 1, #tikers do 
 			InsertRow(m_t,-1)	
 		end
 		
 	end
 
-	closeprice = {} -- создаем массив цен закрытия
+	closeprice = {} -- СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ С†РµРЅ Р·Р°РєСЂС‹С‚РёСЏ
 	signal = {}
 	
 	
 	for x = 1, #tikers do 
-		closeprice[x] = getParamEx("TQBR", tikers[x], "PREVLEGALCLOSEPR") -- цена закрытия предыдущего дня
-		signal[x] = 0 -- статус сигнала по инструменту
+		closeprice[x] = getParamEx("TQBR", tikers[x], "PREVLEGALCLOSEPR") -- С†РµРЅР° Р·Р°РєСЂС‹С‚РёСЏ РїСЂРµРґС‹РґСѓС‰РµРіРѕ РґРЅСЏ
+		signal[x] = 0 -- СЃС‚Р°С‚СѓСЃ СЃРёРіРЅР°Р»Р° РїРѕ РёРЅСЃС‚СЂСѓРјРµРЅС‚Сѓ
 	end
 
 
 	while do_it do
 
-		-- заполнение таблицы
+		-- Р·Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹
 		for i = 1, #tikers do
 			
 			local tLast = getParamEx("TQBR", tikers[i], "LAST") 
@@ -129,7 +129,7 @@ function main()
 			local tBid = getParamEx("TQBR", tikers[i], "BIDDEPTHT") 
 
 			
-			if startind == 0 then -- вывод неизменямой части таблицы
+			if startind == 0 then -- РІС‹РІРѕРґ РЅРµРёР·РјРµРЅСЏРјРѕР№ С‡Р°СЃС‚Рё С‚Р°Р±Р»РёС†С‹
 			
 				local tName = getParamEx("TQBR", tikers[i], "SHORTNAME") 
 				
@@ -145,7 +145,7 @@ function main()
 			time3 = hhmmss(os.sysdate())	
 
 			-- if i == 1 and startind == 0 and time3 >= nomorningtime then
-				-- message('Старт после nomorningtime='..nomorningtime)
+				-- message('РЎС‚Р°СЂС‚ РїРѕСЃР»Рµ nomorningtime='..nomorningtime)
 			-- end			
 			
 			if tonumber(tOffer.param_value) > 2 * tonumber(tBid.param_value) then
@@ -153,17 +153,17 @@ function main()
 				SetColor(m_t, i, 5, mRed, mBlack, mRed, mBlack)
 				SetColor(m_t, i, 6, mWhite, mBlack, mWhite, mBlack)
 				
-				-- отработка сигналов
+				-- РѕС‚СЂР°Р±РѕС‚РєР° СЃРёРіРЅР°Р»РѕРІ
 				if tonumber(tLast.param_value) < tonumber(closeprice[i].param_value) and signal[i] == 0 then 
 					
 			
 					if time3 < nonewsignalstime then
 						SetCell(m_t, i, 7, "SHORT")
-						table_text = "сигнал SHORT по "..tikers[i].." по цене "..tLast.param_image
+						table_text = "СЃРёРіРЅР°Р» SHORT РїРѕ "..tikers[i].." РїРѕ С†РµРЅРµ "..tLast.param_image
 						signal[i] = -1 
 					else
 						SetCell(m_t, i, 7, "no signal SHORT")
-						table_text ="пропускаем сигнал на SHORT по таймеру "..nonewsignalstime.." по "..tikers[i].." по цене "..tLast.param_image
+						table_text ="РїСЂРѕРїСѓСЃРєР°РµРј СЃРёРіРЅР°Р» РЅР° SHORT РїРѕ С‚Р°Р№РјРµСЂСѓ "..nonewsignalstime.." РїРѕ "..tikers[i].." РїРѕ С†РµРЅРµ "..tLast.param_image
 						signal[i] = -2 
 					end
 					
@@ -182,11 +182,11 @@ function main()
 					
 					if time3 < nonewsignalstime then
 						SetCell(m_t, i, 7, "LONG")
-						table_text = "сигнал LONG по "..tikers[i].." по цене "..tLast.param_image
+						table_text = "СЃРёРіРЅР°Р» LONG РїРѕ "..tikers[i].." РїРѕ С†РµРЅРµ "..tLast.param_image
 						signal[i] = 1 
 					else				
 						SetCell(m_t, i, 7, "no signal LONG")
-						table_text = "пропускаем сигнал LONG по таймеру "..nonewsignalstime.." по "..tikers[i].." по цене "..tLast.param_image
+						table_text = "РїСЂРѕРїСѓСЃРєР°РµРј СЃРёРіРЅР°Р» LONG РїРѕ С‚Р°Р№РјРµСЂСѓ "..nonewsignalstime.." РїРѕ "..tikers[i].." РїРѕ С†РµРЅРµ "..tLast.param_image
 						signal[i] = 2 
 					end
  					
@@ -201,13 +201,13 @@ function main()
 				SetColor(m_t, i, 5, mWhite, mBlack, mWhite, mBlack)
 				SetColor(m_t, i, 6, mWhite, mBlack, mWhite, mBlack)
 				
-				--отработка выхода из сигналов
+				--РѕС‚СЂР°Р±РѕС‚РєР° РІС‹С…РѕРґР° РёР· СЃРёРіРЅР°Р»РѕРІ
 				if signal[i] ~= 0 then 
 					if signal[i] == 1 then
-						table_text = "закрытие позиции LONG по "..tikers[i].." по цене "..tLast.param_image
+						table_text = "Р·Р°РєСЂС‹С‚РёРµ РїРѕР·РёС†РёРё LONG РїРѕ "..tikers[i].." РїРѕ С†РµРЅРµ "..tLast.param_image
 					end
 					if signal[i] == -1 then
-						table_text = "закрытие позиции SHORT по "..tikers[i].." по цене "..tLast.param_image
+						table_text = "Р·Р°РєСЂС‹С‚РёРµ РїРѕР·РёС†РёРё SHORT РїРѕ "..tikers[i].." РїРѕ С†РµРЅРµ "..tLast.param_image
 					end
 					signal[i] = 0
 					
@@ -225,20 +225,20 @@ function main()
 			
 			--if table_result_ind == 11 then table_result_ind = 1 end
 			
-			Highlight(m_t, i, QTABLE_NO_INDEX, mGray, mBlack, 500) -- выделение цветом вносимых изменений
+			Highlight(m_t, i, QTABLE_NO_INDEX, mGray, mBlack, 500) -- РІС‹РґРµР»РµРЅРёРµ С†РІРµС‚РѕРј РІРЅРѕСЃРёРјС‹С… РёР·РјРµРЅРµРЅРёР№
 			
-			if startind == 0 and i == #tikers then startind = 1 end -- убираем индекс первой итерации
+			if startind == 0 and i == #tikers then startind = 1 end -- СѓР±РёСЂР°РµРј РёРЅРґРµРєСЃ РїРµСЂРІРѕР№ РёС‚РµСЂР°С†РёРё
 			
 			sleep(100)
 			 
 		end
  
  
-		--остановка по таймеру
+		--РѕСЃС‚Р°РЅРѕРІРєР° РїРѕ С‚Р°Р№РјРµСЂСѓ
 		local time2 = hhmmss(os.sysdate())
 			
 		if time2>= finishtime then
-			table_text = "скрипт остановлен по таймеру: "..time2
+			table_text = "СЃРєСЂРёРїС‚ РѕСЃС‚Р°РЅРѕРІР»РµРЅ РїРѕ С‚Р°Р№РјРµСЂСѓ: "..time2
 			message(progname..table_text)
 			SetCell(table_result, table_result_ind, 1, table_text)
 			OnStop()
