@@ -17,10 +17,10 @@ function OnInit()
 	mGray 	= RGB(226, 226, 226)
 	mBlue 	= RGB(166, 220, 243)   
 	
-	starttime 			= 100100
+	starttime 		= 100100
 	nomorningtime 		= 103000
 	nonewsignalstime 	= 180000
-	finishtime 			= 184000
+	finishtime 		= 184000
 	
 	discreport = 0
 	
@@ -31,7 +31,6 @@ function OnStop()
 	DestroyTable(m_t)
 	do_it = false
 
-	
 	-- закрытие файла
 	my_csv:flush() 
 	my_csv:close()
@@ -274,8 +273,7 @@ function main()
 							end
 						end
 						
-
-						
+					
 						message(progname..table_text)
 						table_print(time3.." "..table_text, table_result_ind)
 						table_result_ind = table_result_ind + 1
