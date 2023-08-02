@@ -17,10 +17,10 @@ function OnInit()
 	mGray 	= RGB(226, 226, 226)
 	mBlue 	= RGB(166, 220, 243)   
 	
-	starttime 		 = 100100
+	starttime 	 = 100100
 	nomorningtime 	 = 103000
 	nonewsignalstime = 180000
-	finishtime 		 = 184000
+	finishtime 	 = 184000
 	
 end
 
