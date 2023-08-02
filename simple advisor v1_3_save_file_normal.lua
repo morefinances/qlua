@@ -17,10 +17,10 @@ function OnInit()
 	mGray 	= RGB(226, 226, 226)
 	mBlue 	= RGB(166, 220, 243)   
 	
-	starttime 			= 100100
+	starttime 		= 100100
 	nomorningtime 		= 103000
 	nonewsignalstime 	= 180000
-	finishtime 			= 184000
+	finishtime 		= 184000
 	
 	discreport = 0
 	
@@ -399,8 +399,7 @@ function main()
 				end
 			
 			end
-			
-									
+												
 			if startind == 0 and i == #tikers then startind = 1 end -- убираем индекс первой итерации
 			
 			sleep(100)
@@ -423,7 +422,6 @@ function main()
 			
 		end
 		
- 
  
 		if IsWindowClosed(m_t) then OnStop() end
 		
