@@ -14,18 +14,18 @@ function OnInit()
 end
 
 function OnStop()
-	message(progname.." финиш.")
+	message(progname.." С„РёРЅРёС€.")
 	do_it = false
 end
 
 function main()
 
-message(progname.." старт работы.")
+message(progname.." СЃС‚Р°СЂС‚ СЂР°Р±РѕС‚С‹.")
 do_it = true
 
-if m_t==nil then     -- если таблица не создана, то 
+if m_t==nil then      
 
-	m_t=AllocTable() -- создаем таблицу
+	m_t=AllocTable()  
 	
 	for u = 1, 20 do
 		if u%2 == 1 then
@@ -38,27 +38,26 @@ if m_t==nil then     -- если таблица не создана, то
 		AddColumn(m_t, u, " ", true, celltype, lencolumn) 
 	end
 
-	CreateWindow(m_t) -- создание окна таблицы
-	SetWindowPos(m_t,690,0,1000,500) -- позиционирвание (x,y от левого верхнего угла) 
-	                                -- и размеры (ширина, высота)
-	SetWindowCaption(m_t, progname.." скринер акций Московской Биржи") -- показать таблицу, пишем заголовок
-	for i=1, 25 do
-		InsertRow(m_t,-1)	-- добавить строку
+	CreateWindow(m_t)  
+	SetWindowPos(m_t,690,0,1000,500)  
+	SetWindowCaption(m_t, progname.." СЃРєСЂРёРЅРµСЂ Р°РєС†РёР№ РњРѕСЃРєРѕРІСЃРєРѕР№ Р‘РёСЂР¶Рё")  
+	
+		for i=1, 25 do
+		InsertRow(m_t,-1)	 
 	end
 end
 
 
-sec_list = getClassSecurities("TQBR") -- тикеры в одну строчку
+sec_list = getClassSecurities("TQBR")  
 	
 	 
 	mColumn = 1
 	mRow = 1
-	sprint = "" -- склейка массивов для вывода
 	xCoord = {}
 	yCoord = {}
 	xy={}
 	
-	-- разбивка строки с тикерами
+	-- СЂР°Р·Р±РёРІРєР° СЃС‚СЂРѕРєРё СЃ С‚РёРєРµСЂР°РјРё
 	for TIKER in string.gmatch(sec_list, "[^,]+") do
 	
 	 
