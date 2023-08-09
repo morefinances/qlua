@@ -51,7 +51,7 @@ function main()
 
 	number_of_candles = ds:Size()
 
-	message("Количество свечей в источнике данных: "..number_of_candles)
+	message("РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРІРµС‡РµР№ РІ РёСЃС‚РѕС‡РЅРёРєРµ РґР°РЅРЅС‹С…: "..number_of_candles)
 	
  
 	
