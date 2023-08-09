@@ -44,7 +44,7 @@ function main()
 
 	number_of_candles = ds:Size()
 
-	message("Количество свечей в источнике данных: "..number_of_candles)
+	message("РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРІРµС‡РµР№ РІ РёСЃС‚РѕС‡РЅРёРєРµ РґР°РЅРЅС‹С…: "..number_of_candles)
 	
 	
 	for index = number_of_candles-9, number_of_candles do
@@ -56,10 +56,10 @@ function main()
 		localtime 	= hhmmss(ds:T(index))
 		localdata 	= DDMMYYYY(ds:T(index))
 		
-		message("Свеча "..index.." data:"..localdata.." time:"..localtime.." open="..openprice.." high="..highprice.." low="..lowprice.." close="..closeprice.." volume="..volume)
+		message("РЎРІРµС‡Р° "..index.." data:"..localdata.." time:"..localtime.." open="..openprice.." high="..highprice.." low="..lowprice.." close="..closeprice.." volume="..volume)
 		
 	end
 	
-	ds:Close() -- закрыть источник данных
+	ds:Close() -- Р·Р°РєСЂС‹С‚СЊ РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С…
 	
 end
