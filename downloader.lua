@@ -1,9 +1,9 @@
 function OnInit()
 	indexload = 0
-	size_table = 21 -- количество строк таблицы
+	size_table = 21 -- РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє С‚Р°Р±Р»РёС†С‹
 	tiker = "SBER"
 	timeframe = INTERVAL_H1
-	progname = "Скрипт выгрузки котировок, версия 1.0 : "
+	progname = "РЎРєСЂРёРїС‚ РІС‹РіСЂСѓР·РєРё РєРѕС‚РёСЂРѕРІРѕРє, РІРµСЂСЃРёСЏ 1.0 : "
 end
 
 function hhmmss(date_time)
@@ -38,7 +38,7 @@ end
 
 function main()
 	
-	message(progname.." cтарт.")
+	message(progname.." cС‚Р°СЂС‚.")
 	
 
 	ds, error_discr = CreateDataSource("TQBR", tiker , timeframe)
@@ -50,15 +50,15 @@ function main()
 	
 	number_of_candles = ds:Size()
 
-	message("Количество свечей в источнике данных: "..number_of_candles)
+	message("РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРІРµС‡РµР№ РІ РёСЃС‚РѕС‡РЅРёРєРµ РґР°РЅРЅС‹С…: "..number_of_candles)
 
 	
-	-- сохранение данных в файл
-	-- наименование файла: тикер _ дата и время текущий свечи _ дата и время первой свечи
+	-- СЃРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… РІ С„Р°Р№Р»
+	-- РЅР°РёРјРµРЅРѕРІР°РЅРёРµ С„Р°Р№Р»Р°: С‚РёРєРµСЂ _ РґР°С‚Р° Рё РІСЂРµРјСЏ С‚РµРєСѓС‰РёР№ СЃРІРµС‡Рё _ РґР°С‚Р° Рё РІСЂРµРјСЏ РїРµСЂРІРѕР№ СЃРІРµС‡Рё
 	filename = tiker.."_"..YYYYDDMM(ds:T(number_of_candles))..hhmmss(ds:T(number_of_candles)).."_"..YYYYDDMM(ds:T(1))..hhmmss(ds:T(1)) 
-	--размещение файла на C:\files
+	--СЂР°Р·РјРµС‰РµРЅРёРµ С„Р°Р№Р»Р° РЅР° C:\files
 	DirectionSaveFile=tostring("C:\\files\\"..filename..".csv")
-	--создаем файл для записи
+	--СЃРѕР·РґР°РµРј С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё
 	my_csv=io.open(DirectionSaveFile,"a+")
 
 	
@@ -76,7 +76,7 @@ function main()
 		AddColumn(table_result, 7, "<VOLUME>", true, QTABLE_INT_TYPE, 15) 
 		CreateWindow(table_result) 
 		SetWindowPos(table_result,0,440,500,420) 
-		SetWindowCaption(table_result, "Выгрузка котировок : "..tiker.." таймфрейм : "..timeframe)
+		SetWindowCaption(table_result, "Р’С‹РіСЂСѓР·РєР° РєРѕС‚РёСЂРѕРІРѕРє : "..tiker.." С‚Р°Р№РјС„СЂРµР№Рј : "..timeframe)
 		
 		for u = 1, size_table do 
 			InsertRow(table_result,-1)	
@@ -96,7 +96,7 @@ function main()
 		
 		my_csv:write(localdata..";"..localtime..";"..openprice..";"..highprice..";"..lowprice..";"..closeprice..";"..volume..";\n")
 		
-		--наполнение таблицы
+		--РЅР°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹
 		if index >= number_of_candles-9 and  index <= (number_of_candles) then
 			local linetable = 1 + number_of_candles - index
 			SetCell(table_result, linetable, 1, tostring(localdata))
@@ -125,13 +125,13 @@ function main()
 		
 	end
 	
-	-- сохраняем и закрываем файл
+	-- СЃРѕС…СЂР°РЅСЏРµРј Рё Р·Р°РєСЂС‹РІР°РµРј С„Р°Р№Р»
 	my_csv:flush() 
 	my_csv:close()
 	
 	
-	ds:Close() -- закрыть источник данных
+	ds:Close() -- Р·Р°РєСЂС‹С‚СЊ РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С…
 	
-	message(progname.." завершение.")
+	message(progname.." Р·Р°РІРµСЂС€РµРЅРёРµ.")
 	
 end
