@@ -15,11 +15,11 @@ function main()
 
 	number_of_candles = ds:Size()
 	
-	message("Количество свечей в источнике данных: "..number_of_candles)
+	message("РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРІРµС‡РµР№ РІ РёСЃС‚РѕС‡РЅРёРєРµ РґР°РЅРЅС‹С…: "..number_of_candles)
 	
 	if number_of_candles < N then 
 	
-		message("Недостаточно данных для расчета")
+		message("РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РґР°РЅРЅС‹С… РґР»СЏ СЂР°СЃС‡РµС‚Р°")
 		message(number_of_candles.." < "..N)
 		
 	else
@@ -35,7 +35,7 @@ function main()
 	end
 	
 	
-	-- закрыть источники данных
+	-- Р·Р°РєСЂС‹С‚СЊ РёСЃС‚РѕС‡РЅРёРєРё РґР°РЅРЅС‹С…
 	ds:Close() 
 	
 end
