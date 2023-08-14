@@ -18,9 +18,9 @@ OFFER_from_graph, c, d = getCandlesByIndex(tiker_offer_id, 0, 0, number_of_candl
 
 for i = number_of_candles_bid-10, number_of_candles_bid-1 do
 
-	message("Свеча : "..i)
-	message("Общий спрос : "..BID_from_graph[i].close)
-	message("Общее предл.: "..OFFER_from_graph[i].close)
+	message("РЎРІРµС‡Р° : "..i)
+	message("РћР±С‰РёР№ СЃРїСЂРѕСЃ : "..BID_from_graph[i].close)
+	message("РћР±С‰РµРµ РїСЂРµРґР».: "..OFFER_from_graph[i].close)
 
 end
 
