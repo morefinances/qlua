@@ -8,10 +8,10 @@ end
 
 function OnStop()
 	do_it = false
-	message(progname.." завершение")
+	message(progname.." Р·Р°РІРµСЂС€РµРЅРёРµ")
 end
 
--- метка сигнала на вход
+-- РјРµС‚РєР° СЃРёРіРЅР°Р»Р° РЅР° РІС…РѕРґ
 function signaldraw(price, direction)
 	arrow_params = {
 		ALIGNMENT = "LEFT",
@@ -32,7 +32,7 @@ function signaldraw(price, direction)
 	
 end
 
--- метка выхода
+-- РјРµС‚РєР° РІС‹С…РѕРґР°
 function drawexit(price)
 	arrow_params = {
 		ALIGNMENT = "LEFT",
@@ -49,7 +49,7 @@ function drawexit(price)
 	
 end
 
--- текстовая метка
+-- С‚РµРєСЃС‚РѕРІР°СЏ РјРµС‚РєР°
 function labeldraw(price, direction, textlabel, texthint)
 	label_params = {
 		TEXT = textlabel,
@@ -88,13 +88,13 @@ function main()
 	
 do_it = true
 
--- брать по закрытию свечке
+-- Р±СЂР°С‚СЊ РїРѕ Р·Р°РєСЂС‹С‚РёСЋ СЃРІРµС‡РєРµ
 	
-	message(progname.." старт")
+	message(progname.." СЃС‚Р°СЂС‚")
 
 	while do_it do
 		
-		--цены и объемы	
+		--С†РµРЅС‹ Рё РѕР±СЉРµРјС‹	
 		number_of_candles = getNumCandles(tiker_id)
 		price, _, _ = getCandlesByIndex(tiker_id, 0, number_of_candles - 2, 2)	
 		sleep(300)
@@ -105,7 +105,7 @@ do_it = true
 		price_channel_lower, _, _ = getCandlesByIndex(tiker_price_channel_id, 2, number_of_candles_price_channel - 3, 3)
 		sleep(300)
 
-		--конверты
+		--РєРѕРЅРІРµСЂС‚С‹
 		number_of_candles_envelopes = getNumCandles(tiker_envelopes_id)
 		envelopes_upper, _, _ = getCandlesByIndex(tiker_envelopes_id, 1, number_of_candles_envelopes - 2, 2)
 		sleep(300)
@@ -146,7 +146,7 @@ do_it = true
 		
 		
 		
-			-- выход из лонга
+			-- РІС‹С…РѕРґ РёР· Р»РѕРЅРіР°
 			if position==1 and price[0].close < envelopes_upper[0].close then
 				position=0
 				message("position=0 ".." close = "..price[0].close.." < envelopes_upper ="..envelopes_upper[0].close.." "..price[0].datetime.hour..":"..fulltime(price[0].datetime.min)..":"..fulltime(price[0].datetime.sec))
@@ -155,7 +155,7 @@ do_it = true
 				drawexit(price[0].close)
 			end
 			
-			-- выход из шорта
+			-- РІС‹С…РѕРґ РёР· С€РѕСЂС‚Р°
 			if position==-1 and price[0].close and price[0].close > envelopes_lower[0].close then
 				position=0
 				message("position=0 ".." close = "..price[0].close.." < envelopes_lower ="..price_channel_lower[0].close.." "..price[0].datetime.hour..":"..fulltime(price[0].datetime.min)..":"..fulltime(price[0].datetime.sec))
