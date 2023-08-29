@@ -22,7 +22,7 @@ function OnAllTrade(alltrade)
 			sentiment = sentiment + lastvolume
 		end		
 			
-		message("Сентимент: "..sentiment)
+		message("РЎРµРЅС‚РёРјРµРЅС‚: "..sentiment)
 		
 	end
 end
