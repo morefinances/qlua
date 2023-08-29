@@ -5,7 +5,7 @@ function OnInit()
 end
 
 function OnStop()
-	message(progname.." завершение работы")
+	message(progname.." Р·Р°РІРµСЂС€РµРЅРёРµ СЂР°Р±РѕС‚С‹")
 	do_it = false
 end
 
@@ -41,19 +41,19 @@ function OnAllTrade(alltrade)
 	
 	if alltrade.sec_code == "SBER" then
 	
-		lastprice	= alltrade.price 	-- цена
-		lastvolume	= alltrade.qty 		-- количество
+		lastprice	= alltrade.price 	-- С†РµРЅР°
+		lastvolume	= alltrade.qty 		-- РєРѕР»РёС‡РµСЃС‚РІРѕ
 		
 		if lastvolume >= 1000 then
 		
 			if bit.test(alltrade.flags, 0) then 
 				direction = -1 
-				text = "Продажа по: "
+				text = "РџСЂРѕРґР°Р¶Р° РїРѕ: "
 			end
 			
 			if bit.test(alltrade.flags, 1) then 
 				direction = 1 
-				text = "Покупка по: "
+				text = "РџРѕРєСѓРїРєР° РїРѕ: "
 			end		
 			
 			if lastvolume >= 3000 then
@@ -65,7 +65,7 @@ function OnAllTrade(alltrade)
 			end
 			
 			pointdraw(lastprice, direction, size, tostring(lastvolume))
-			message(text.." "..string.format("%.2f", lastprice).." количество: "..string.format("%.0f",lastvolume))
+			message(text.." "..string.format("%.2f", lastprice).." РєРѕР»РёС‡РµСЃС‚РІРѕ: "..string.format("%.0f",lastvolume))
 			
 		end		
 		
@@ -75,7 +75,7 @@ end
 
 function main()
 
-	message(progname.." старт работы.")
+	message(progname.." СЃС‚Р°СЂС‚ СЂР°Р±РѕС‚С‹.")
 	
 	while do_it do 
 		sleep(1000) 
