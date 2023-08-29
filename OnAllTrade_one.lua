@@ -11,18 +11,18 @@ function OnAllTrade(alltrade)
 	
 	if alltrade.sec_code=="SBER" then
 	
-		lastprice	= alltrade.price 	-- цена
-		lastvolume	= alltrade.qty 		-- количество
-		lastvalue 	= alltrade.value 	-- оборот
+		lastprice	= alltrade.price 	-- С†РµРЅР°
+		lastvolume	= alltrade.qty 		-- РєРѕР»РёС‡РµСЃС‚РІРѕ
+		lastvalue 	= alltrade.value 	-- РѕР±РѕСЂРѕС‚
 		
 		
 		if lastvolume >= 100 then
 		
 			if bit.test(alltrade.flags, 0) then  
-				message("Продажа: количество: "..lastvolume.." цена: "..lastprice.." оборот: "..lastvalue)
+				message("РџСЂРѕРґР°Р¶Р°: РєРѕР»РёС‡РµСЃС‚РІРѕ: "..lastvolume.." С†РµРЅР°: "..lastprice.." РѕР±РѕСЂРѕС‚: "..lastvalue)
 			end
 			if bit.test(alltrade.flags, 1) then 
-				message("Покупка: количество: "..lastvolume.." цена: "..lastprice.." оборот: "..lastvalue)
+				message("РџРѕРєСѓРїРєР°: РєРѕР»РёС‡РµСЃС‚РІРѕ: "..lastvolume.." С†РµРЅР°: "..lastprice.." РѕР±РѕСЂРѕС‚: "..lastvalue)
 			end		
 			
 		end
