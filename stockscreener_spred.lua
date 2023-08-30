@@ -14,12 +14,12 @@ function OnInit()
 end
 
 function OnStop()
-	message(progname.." финиш.")
+	message(progname.." С„РёРЅРёС€.")
 	do_it = false
 end
 
 
-function exc_tik(stock) -- исключение бумаг с нулевыми оборотами
+function exc_tik(stock) -- РёСЃРєР»СЋС‡РµРЅРёРµ Р±СѓРјР°Рі СЃ РЅСѓР»РµРІС‹РјРё РѕР±РѕСЂРѕС‚Р°РјРё
 	t = {
 		"ACKO",
 		"GAZC",
@@ -38,7 +38,7 @@ end
 
 function main()
 
-message(progname.." старт работы.")
+message(progname.." СЃС‚Р°СЂС‚ СЂР°Р±РѕС‚С‹.")
 do_it = true
 
 if m_t==nil then      
@@ -58,7 +58,7 @@ if m_t==nil then
 
 	CreateWindow(m_t)  
 	SetWindowPos(m_t,690,0,1000,500)  
-	SetWindowCaption(m_t, progname.." скринер спредов") 
+	SetWindowCaption(m_t, progname.." СЃРєСЂРёРЅРµСЂ СЃРїСЂРµРґРѕРІ") 
 	
 	for i=1, 25 do
 		InsertRow(m_t,-1)	 
@@ -67,7 +67,7 @@ if m_t==nil then
 end
 
 
-sec_list = getClassSecurities("TQBR") -- тикеры в одну строчку
+sec_list = getClassSecurities("TQBR") -- С‚РёРєРµСЂС‹ РІ РѕРґРЅСѓ СЃС‚СЂРѕС‡РєСѓ
 	
 	 
 	mColumn = 1
@@ -76,7 +76,7 @@ sec_list = getClassSecurities("TQBR") -- тикеры в одну строчку
 	yCoord = {}
 	xy={}
 	
-	-- разбивка строки с тикерами
+	-- СЂР°Р·Р±РёРІРєР° СЃС‚СЂРѕРєРё СЃ С‚РёРєРµСЂР°РјРё
 	for TIKER in string.gmatch(sec_list, "[^,]+") do
 		
 		if exc_tik(TIKER) == 0 then
