@@ -108,6 +108,7 @@ sec_list = getClassSecurities("TQBR") -- тикеры в одну строчку
 		
 			offer = tonumber(getParamEx("TQBR", tikers[i], "OFFER").param_value)
 			bid = tonumber(getParamEx("TQBR", tikers[i], "BID").param_value)
+			sleep(300)
 			
 			if bid~=0 then			
 				spread = 100* (offer - bid)/bid
