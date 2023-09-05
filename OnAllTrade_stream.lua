@@ -1,16 +1,16 @@
--- вывод ленты покупок в одном направлении
+-- РІС‹РІРѕРґ Р»РµРЅС‚С‹ РїРѕРєСѓРїРѕРє РІ РѕРґРЅРѕРј РЅР°РїСЂР°РІР»РµРЅРёРё
 function OnInit()
 	do_it = true
 	tiker_id = "SBER3_ID"
 	progname = "simple advisor v.3.3 : "
 	sum = 0
 	--trade = 0
-	pretrade = 0	-- направление предыдущего трейда
-	startindex = 0	-- флаг обработки первой сделки (в этом случае нет предыдущего трейда)
+	pretrade = 0	-- РЅР°РїСЂР°РІР»РµРЅРёРµ РїСЂРµРґС‹РґСѓС‰РµРіРѕ С‚СЂРµР№РґР°
+	startindex = 0	-- С„Р»Р°Рі РѕР±СЂР°Р±РѕС‚РєРё РїРµСЂРІРѕР№ СЃРґРµР»РєРё (РІ СЌС‚РѕРј СЃР»СѓС‡Р°Рµ РЅРµС‚ РїСЂРµРґС‹РґСѓС‰РµРіРѕ С‚СЂРµР№РґР°)
 end
 
 function OnStop()
-	message(progname.."завершение работы")
+	message(progname.."Р·Р°РІРµСЂС€РµРЅРёРµ СЂР°Р±РѕС‚С‹")
 	do_it = false
 end
 
@@ -48,11 +48,11 @@ function OnAllTrade(alltrade)
 	
 	if alltrade.sec_code=="SBER" then
 	
-		lastprice	= alltrade.price 	-- цена
-		lastvolume	= alltrade.qty 		-- количество
+		lastprice	= alltrade.price 	-- С†РµРЅР°
+		lastvolume	= alltrade.qty 		-- РєРѕР»РёС‡РµСЃС‚РІРѕ
 		
-		if bit.test(alltrade.flags, 0) then direction = -1 end 	-- направление сделки: продажа
-		if bit.test(alltrade.flags, 1) then direction = 1 end	-- направление сделки: покупка
+		if bit.test(alltrade.flags, 0) then direction = -1 end 	-- РЅР°РїСЂР°РІР»РµРЅРёРµ СЃРґРµР»РєРё: РїСЂРѕРґР°Р¶Р°
+		if bit.test(alltrade.flags, 1) then direction = 1 end	-- РЅР°РїСЂР°РІР»РµРЅРёРµ СЃРґРµР»РєРё: РїРѕРєСѓРїРєР°
 		
 		if indexstart == 0 then
 		
@@ -75,10 +75,10 @@ function OnAllTrade(alltrade)
 		
 			if sum > 0 then
 				dir = 1	
-				text = "Покупка по: "
+				text = "РџРѕРєСѓРїРєР° РїРѕ: "
 			else
 				dir = -1	
-				text = "Продажа по: "
+				text = "РџСЂРѕРґР°Р¶Р° РїРѕ: "
 			end
 		
 			if math.abs(sum) == 100 then						 
@@ -95,7 +95,7 @@ function OnAllTrade(alltrade)
 		end
 		
 		
-		if indexstart == 0 then indexstart = 1 end				-- снимаем флаг обработки первой сделки
+		if indexstart == 0 then indexstart = 1 end				-- СЃРЅРёРјР°РµРј С„Р»Р°Рі РѕР±СЂР°Р±РѕС‚РєРё РїРµСЂРІРѕР№ СЃРґРµР»РєРё
 		
 		pretrade = direction
 		
@@ -105,7 +105,7 @@ end
 
 function main()
 
-	message(progname.."старт работы")
+	message(progname.."СЃС‚Р°СЂС‚ СЂР°Р±РѕС‚С‹")
 	
 	if m_t==nil then
 		m_t=AllocTable()
@@ -113,7 +113,7 @@ function main()
 		
 		CreateWindow(m_t)
 		SetWindowPos(m_t, 500, 447, 200, 110)
-		SetWindowCaption(m_t, progname.." анализ2")
+		SetWindowCaption(m_t, progname.." Р°РЅР°Р»РёР·2")
 		InsertRow(m_t,-1)
 	
 	end
