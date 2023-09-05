@@ -1,7 +1,7 @@
 function OnInit()
 	do_it = true
 	tiker_id = "SBER2_ID"
-	progname = "simple advisor v.3.0 : "
+	progname = "simple advisor v.3.2 : "
 	sum = 0
 	msum = {}
 end
