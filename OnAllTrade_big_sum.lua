@@ -7,7 +7,7 @@ function OnInit()
 end
 
 function OnStop()
-	message(progname.."завершение работы")
+	message(progname.."Р·Р°РІРµСЂС€РµРЅРёРµ СЂР°Р±РѕС‚С‹")
 	do_it = false
 end
 
@@ -48,44 +48,44 @@ function OnAllTrade(alltrade)
 	
 	if alltrade.sec_code=="SBER" then
 	
-		lastprice	= alltrade.price 	-- цена
-		lastvolume	= alltrade.qty 		-- количество
+		lastprice	= alltrade.price 	-- С†РµРЅР°
+		lastvolume	= alltrade.qty 		-- РєРѕР»РёС‡РµСЃС‚РІРѕ
 		
-		if bit.test(alltrade.flags, 0) then direction = -1 end 	-- направление сделки: продажа
-		if bit.test(alltrade.flags, 1) then direction = 1 end	-- направление сделки: покупка
+		if bit.test(alltrade.flags, 0) then direction = -1 end 	-- РЅР°РїСЂР°РІР»РµРЅРёРµ СЃРґРµР»РєРё: РїСЂРѕРґР°Р¶Р°
+		if bit.test(alltrade.flags, 1) then direction = 1 end	-- РЅР°РїСЂР°РІР»РµРЅРёРµ СЃРґРµР»РєРё: РїРѕРєСѓРїРєР°
 		
-		sum = sum + direction * lastvolume						-- накапливаем сумму с учетом 
-																-- направления последней сделки
-		table.insert(msum, direction * lastvolume)				-- добавляем в массив направление и количество
+		sum = sum + direction * lastvolume						-- РЅР°РєР°РїР»РёРІР°РµРј СЃСѓРјРјСѓ СЃ СѓС‡РµС‚РѕРј 
+																-- РЅР°РїСЂР°РІР»РµРЅРёСЏ РїРѕСЃР»РµРґРЅРµР№ СЃРґРµР»РєРё
+		table.insert(msum, direction * lastvolume)				-- РґРѕР±Р°РІР»СЏРµРј РІ РјР°СЃСЃРёРІ РЅР°РїСЂР°РІР»РµРЅРёРµ Рё РєРѕР»РёС‡РµСЃС‚РІРѕ
 		
 		if #msum >= 21 then 
-			sum = sum - msum[1]									-- если массив стал >= 21, то вычитаем первое значение из sum
-			table.remove(msum, 1)								-- аналогично удаляем 1й элемент из массива
+			sum = sum - msum[1]									-- РµСЃР»Рё РјР°СЃСЃРёРІ СЃС‚Р°Р» >= 21, С‚Рѕ РІС‹С‡РёС‚Р°РµРј РїРµСЂРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РёР· sum
+			table.remove(msum, 1)								-- Р°РЅР°Р»РѕРіРёС‡РЅРѕ СѓРґР°Р»СЏРµРј 1Р№ СЌР»РµРјРµРЅС‚ РёР· РјР°СЃСЃРёРІР°
 		end
 			
-		if math.abs(sum) >= 2000 and #msum==20 then				-- сравниваем по модулю sum
-																-- для определения размера метки
-			if math.abs(sum) >= 5000 then						-- при >= 5000 3й
+		if math.abs(sum) >= 2000 and #msum==20 then				-- СЃСЂР°РІРЅРёРІР°РµРј РїРѕ РјРѕРґСѓР»СЋ sum
+																-- РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЂР°Р·РјРµСЂР° РјРµС‚РєРё
+			if math.abs(sum) >= 5000 then						-- РїСЂРё >= 5000 3Р№
 				size = 3
-			elseif math.abs(sum) >= 3000 then					-- при >= 3000 2й
+			elseif math.abs(sum) >= 3000 then					-- РїСЂРё >= 3000 2Р№
 				size = 2
-			else 												-- при >= 2000 1й
+			else 												-- РїСЂРё >= 2000 1Р№
 				size = 1
 			end
 		
-			if sum > 0 then 									-- определяем направление сигнала
-				dir = 1											-- при положительном sum лонг
-				text = "Покупка по: "
+			if sum > 0 then 									-- РѕРїСЂРµРґРµР»СЏРµРј РЅР°РїСЂР°РІР»РµРЅРёРµ СЃРёРіРЅР°Р»Р°
+				dir = 1											-- РїСЂРё РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРј sum Р»РѕРЅРі
+				text = "РџРѕРєСѓРїРєР° РїРѕ: "
 			else	
-				dir = -1 										-- при отрицательном шорт
-				text = "Продажа по: "
+				dir = -1 										-- РїСЂРё РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРј С€РѕСЂС‚
+				text = "РџСЂРѕРґР°Р¶Р° РїРѕ: "
 			end
 		
-			pointdraw(lastprice, dir, size, tostring(lastprice.." / "..sum)) -- вывод метки на график
-																			 -- дублируем в окно сообщений
+			pointdraw(lastprice, dir, size, tostring(lastprice.." / "..sum)) -- РІС‹РІРѕРґ РјРµС‚РєРё РЅР° РіСЂР°С„РёРє
+																			 -- РґСѓР±Р»РёСЂСѓРµРј РІ РѕРєРЅРѕ СЃРѕРѕР±С‰РµРЅРёР№
 			message(progname..text.." "..string.format("%.2f", lastprice).." sum: "..string.format("%.0f",sum))
-			sum = 0    											-- обнуляем после сигнала сумму
-			msum = {}											-- и массив
+			sum = 0    											-- РѕР±РЅСѓР»СЏРµРј РїРѕСЃР»Рµ СЃРёРіРЅР°Р»Р° СЃСѓРјРјСѓ
+			msum = {}											-- Рё РјР°СЃСЃРёРІ
 		
 		end
 			
@@ -95,7 +95,7 @@ end
 
 function main()
 
-	message(progname.."старт работы")
+	message(progname.."СЃС‚Р°СЂС‚ СЂР°Р±РѕС‚С‹")
 	
 	if m_t==nil then
 		m_t=AllocTable()
@@ -104,7 +104,7 @@ function main()
 		
 		CreateWindow(m_t)
 		SetWindowPos(m_t, 500, 447, 200, 110)
-		SetWindowCaption(m_t, progname.." анализ")
+		SetWindowCaption(m_t, progname.." Р°РЅР°Р»РёР·")
 		InsertRow(m_t,-1)
 	
 	end
