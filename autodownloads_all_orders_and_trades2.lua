@@ -183,8 +183,6 @@ function main()
 		end
 
 		if last_time ~= current_time and last_time > current_time then
-			message('current_time='..current_time)
-			message('last_time='..last_time)
 			indexdownloads = 0
 		end
 
