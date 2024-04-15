@@ -163,7 +163,7 @@ function main()
 
 	current_time = tonumber(os.date("%H%M%S"))
 	
-		if indexdownloads == 0 and current_time >= time_for_downloads then
+		if indexdownloads == 0 and current_time > time_for_downloads then
 			
 			message(string.rep('-', 25))
 			
